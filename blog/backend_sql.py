@@ -29,6 +29,7 @@ class backend_operation:
             sql = "insert into user(username,password) values('%s','%s')"%(username,password)+";"
             print("what",sql)
             self.cursor.execute(sql)
+            self.conn.commit()
             # self.exit()
             return True
     def delete(self,username):

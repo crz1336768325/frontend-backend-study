@@ -1,0 +1,16 @@
+button {
+    background-color: lightblue;
+  }
+  
+#upload {
+    background-color: yellow;
+    text-align:center;
+    height: 200px;
+
+  }
+body{
+
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+
+}

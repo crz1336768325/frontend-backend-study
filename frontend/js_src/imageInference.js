@@ -8,8 +8,7 @@ window.onload=function(){
             pw:""
         },
         methods : {
-
-            submit_user_passward:function(){
+            uploadImage:function(){
 
                 console.log("提交用户名");
                 console.log("用户名"+this.username)
@@ -20,14 +19,10 @@ window.onload=function(){
                     console.log(response.data['status'])
                     if (response.data['status']==="success"){
                         console.log("成功登录")
-                        // alert("成功登录")
-                        // location.href = "http://www.baidu.com"; //重定向到新的页面
-                        location.href = "../html/imageInference.html"; 
-
+                        alert("成功登录")
                     }else{
                         console.log("登录失败，用户名或密码不正确")
                         alert("登录失败，用户名或密码不正确")
-                        // location.href = "https://www.runoob.com/"; //重定向成功
                     }
                 }).catch(function (error) {
                     console.log(error);
