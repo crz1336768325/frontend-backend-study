@@ -46,5 +46,5 @@ def index(request):
         print("-------------------")
         # return HttpResponse("服务器成功接收post请求."+content)
         return HttpResponse(json.dumps(data))
-def test(request):
+def login_check(request):
     print("ssssssssssssssssssss")
