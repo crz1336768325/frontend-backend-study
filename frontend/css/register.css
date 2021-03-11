@@ -2,8 +2,8 @@ button {
     background-color: lightblue;
   }
   
-#loginpage {
-    background-color: yellow;
+div {
+    background-color: pink;
     text-align:center;
     height: 200px;
 
@@ -16,6 +16,6 @@ a{
 .f1{
   background-color: red;
   text-align:center;
-  height: 30px;
+  height: 200px;
 
 }

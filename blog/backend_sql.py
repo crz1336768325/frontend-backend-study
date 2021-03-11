@@ -8,10 +8,10 @@ class backend_operation:
         self.cursor.execute("show databases;")
         print(self.cursor.fetchall())
         self.cursor.execute("use backendsql;")
-    def checkexist(self,username):
+    def checkexist(self,username,password):
         
-        sql="SELECT * FROM user WHERE username="+"'"+str(username)+"'"+";"
-        print("what",sql)
+        sql="SELECT * FROM user WHERE username="+"'"+str(username)+"'"+ " and password="+"'"+str(password)+"'"+";"
+        
         self.cursor.execute(sql)
         result=self.cursor.fetchall()
         print("check result",result)
@@ -22,20 +22,23 @@ class backend_operation:
     def insert(self,param):
         username=param[0]
         password=param[1]
-        if self.checkexist(username):
+        if self.checkexist(username,password):
+            # self.exit()
             return False
         else:
-            sql = 'insert into USER values%s,%s)'%(username,password)
+            sql = "insert into user(username,password) values('%s','%s')"%(username,password)+";"
+            print("what",sql)
             self.cursor.execute(sql)
+            # self.exit()
             return True
     def delete(self,username):
-        sql='DELETE from USER WHERE username=%s'%(username)
+        sql='DELETE from user WHERE username=%s'%(username)+";"
         self.cursor.excute(sql)
         
 
     def search(self,age,gender):
         print("search--------")
-        sql="SELECT * FROM USER WHERE AGE_RANGE="+str(age)+" AND GENDER="+"'"+gender+"'"+";"
+        sql="SELECT * FROM user WHERE AGE_RANGE="+str(age)+" AND GENDER="+"'"+gender+"'"+";"
         print(sql)
         # sql = "SELECT * FROM USER WHERE AGE_RANGE=5 AND GENDER='M';"
         self.cursor.execute(sql)
