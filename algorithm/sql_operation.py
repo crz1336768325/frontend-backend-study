@@ -27,17 +27,12 @@ cursor.execute("use crz;")
 # conn.commit()
 # cursor.close()
 # conn.close()
-def search(age,gender):
-    print("search--------")
-    sql="SELECT * FROM USER WHERE AGE_RANGE="+str(age)+" AND GENDER="+"'"+gender+"'"+";"
-    print(sql)
-    # sql = "SELECT * FROM USER WHERE AGE_RANGE=5 AND GENDER='M';"
-    cursor.execute(sql)
-    result=cursor.fetchall()
-    print(result)
-    for row in result:
-        print(row[0])
-        print(row[1])
-        print(row[2])
 
-# search(5,'M')
+sql = "SELECT * FROM USER WHERE AGE_RANGE=5 AND GENDER='M';"
+cursor.execute(sql)
+result=cursor.fetchall()
+print(result)
+for row in result:
+    print(row[0])
+    print(row[1])
+    print(row[2])

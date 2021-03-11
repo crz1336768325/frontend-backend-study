@@ -46,5 +46,19 @@ def index(request):
         print("-------------------")
         # return HttpResponse("服务器成功接收post请求."+content)
         return HttpResponse(json.dumps(data))
+@csrf_exempt
 def login_check(request):
-    print("ssssssssssssssssssss")
+    print("请求方法",request.method)
+    print(request.body)
+    if request.method == "POST":
+        print("login_check detial ",request.body)
+        json_name=json.loads(request.body)
+        username=json_name['name']
+        password=json_name['password']
+
+        data={
+            'status':'success'
+        }
+        # return HttpResponse("服务器成功接收post请求."+content)
+        return HttpResponse(json.dumps(data))
+

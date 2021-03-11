@@ -17,9 +17,9 @@
         <!-- <img src="./material/background.jpg"></img> -->
         <div id="loginpage">
             <!-- <text>sddsd<text> -->
-            <button v-on:click="submitname">提交账号</button>
-
-            <button v-on:click="submitpassward"> 提交密码</button>
+            <input v-model="username">用户名</input>
+            <input v-model="pw" type="password">密码</input>
+            <button v-on:click="submit_user_passward"> 提交</button>
         </div>
       
     </body>
