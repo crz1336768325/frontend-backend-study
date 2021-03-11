@@ -17,8 +17,10 @@ window.onload=function(){
                     console.log(response.data['status'])
                     if (response.data['status']==="success"){
                         console.log("成功注册用户")
+                        alert("成功注册用户")
                     }else{
                         console.log("注册用户失败，用户已存在")
+                        alert("注册用户失败，用户已存在")
                     }
                 }).catch(function (error) {
                     console.log(error);

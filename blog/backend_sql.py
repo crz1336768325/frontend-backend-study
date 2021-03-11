@@ -1,16 +1,25 @@
 import mysql.connector
 
-class backend_sql:
+class backend_operation:
     def __init__(self):
         super().__init__()
-        self.conn = mysql.connector.connect(host="localhost",user='root', password='password', database='crz', use_unicode=True)
+        self.conn = mysql.connector.connect(host="localhost",user='root', password='password', database='backendsql', use_unicode=True)
         self.cursor=self.conn.cursor()
         self.cursor.execute("show databases;")
         print(self.cursor.fetchall())
         self.cursor.execute("use backendsql;")
-    def checkexist(param):
-        pass
-    def insert(param):
+    def checkexist(self,username):
+        
+        sql="SELECT * FROM user WHERE username="+"'"+str(username)+"'"+";"
+        print("what",sql)
+        self.cursor.execute(sql)
+        result=self.cursor.fetchall()
+        print("check result",result)
+        if len(result)==0:
+            return False
+        else:
+            return True
+    def insert(self,param):
         username=param[0]
         password=param[1]
         if self.checkexist(username):
@@ -19,12 +28,12 @@ class backend_sql:
             sql = 'insert into USER values%s,%s)'%(username,password)
             self.cursor.execute(sql)
             return True
-    def delete(username):
+    def delete(self,username):
         sql='DELETE from USER WHERE username=%s'%(username)
         self.cursor.excute(sql)
         
 
-    def search(age,gender):
+    def search(self,age,gender):
         print("search--------")
         sql="SELECT * FROM USER WHERE AGE_RANGE="+str(age)+" AND GENDER="+"'"+gender+"'"+";"
         print(sql)
@@ -34,9 +43,8 @@ class backend_sql:
         print(result)
         for row in result:
             print(row[0])
-            print(row[1])
-            print(row[2])
-    def exit():
+
+    def exit(self):
         self.conn.commit()
         self.cursor.close()
         self.conn.close()

@@ -4,10 +4,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import sys
-sys.path.append("..")
+# sys.path.append("..")
 from algorithm.detect import detect
 import json
-
+from  backend_sql  import *
+sqlOperation=backend_operation()
 # 一般 前后端数据传递使用json的方式传递
 @csrf_exempt
 def index(request):
@@ -55,10 +56,16 @@ def login_check(request):
         json_name=json.loads(request.body)
         username=json_name['name']
         password=json_name['password']
-
-        data={
-            'status':'success'
-        }
+        print("---------",username)
+        exist=sqlOperation.checkexist(username)
+        if exist:
+            data={
+                'status':'failed'
+            }
+        else:
+            data={
+                'status':'success'
+            }
         # return HttpResponse("服务器成功接收post请求."+content)
         return HttpResponse(json.dumps(data))
 

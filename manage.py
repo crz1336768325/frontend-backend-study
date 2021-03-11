@@ -4,6 +4,7 @@ import os
 import sys
 
 sys.path.append("./algorithm")
+sys.path.append("./blog")
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myfirstproject.settings')
     try:
