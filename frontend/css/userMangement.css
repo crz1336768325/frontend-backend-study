@@ -1,0 +1,21 @@
+button {
+    background-color: lightblue;
+  }
+  
+#loginpage {
+    background-color: yellow;
+    text-align:center;
+    height: 200px;
+
+  }
+a{
+  background-color: red;
+  text-align:center;
+
+}
+.f1{
+  background-color: red;
+  text-align:center;
+  height: 30px;
+
+}
