@@ -1,13 +1,15 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import sys
 # sys.path.append("..")
 from algorithm.detect import detect
 import json
 from  backend_sql  import *
+import settings
+import os
 sqlOperation=backend_operation()
 # 一般 前后端数据传递使用json的方式传递
 @csrf_exempt
@@ -92,3 +94,27 @@ def register_check(request):
             }
         # return HttpResponse("服务器成功接收post请求."+content)
         return HttpResponse(json.dumps(data))
+
+
+
+@csrf_exempt
+# 用于用户登录确认
+def uploadImg(request):
+    res={}
+
+    image = request.FILES.get('file')
+    if not all([image]):
+        res['code']=10020
+        res['status']='failed'
+    else:
+        image_name = image.name
+        image_path = os.path.join(settings.UPLOAD_FILE,image_name)
+        f = open(image_path,'wb')
+        for i in image.chunks():
+            f.write(i)
+        f.close()
+
+        res['code']=200
+        res['status']='success'
+    #直接返回的就是json格式，省去了json转换的步骤
+    return JsonResponse(res)

@@ -18,9 +18,19 @@
         <!-- <img src="./material/background.jpg"></img> -->
         <div id="upload">
             <!-- <text>sddsd<text> -->
-
-            <button v-on:click="uploadImage"> 上传图像</button>
+            <input type="file" id="uploadImage"></input>
+            <button   v-on:click="addimg">添加图像</button>
+             
+            <!-- <button v-on:click="uploadImage"> 上传图像</button> -->
             
+        </div>
+        <div id="AI_algorithm">
+            <button   v-on:click="recognition">识别</button>   
+            <button   v-on:click="detect">检测</button>   
+            <button   v-on:click="segmentation">分割</button>   
+            <button   v-on:click="superresolution">超分</button>   
+            <button   v-on:click="gan">生成对抗</button>   
+
         </div>
 
       

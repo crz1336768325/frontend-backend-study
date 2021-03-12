@@ -14,3 +14,9 @@ body{
   background-size:100% 100%;
 
 }
+#AI_algorithm {
+  background-color: red;
+  text-align:center;
+  height: 200px;
+
+}
