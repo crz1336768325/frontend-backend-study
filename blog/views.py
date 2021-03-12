@@ -106,6 +106,7 @@ def uploadImg(request):
     if not all([image]):
         res['code']=10020
         res['status']='failed'
+        res['imgpath']=None
     else:
         image_name = image.name
         image_path = os.path.join(settings.UPLOAD_FILE,image_name)
@@ -116,5 +117,6 @@ def uploadImg(request):
 
         res['code']=200
         res['status']='success'
+        res['imgpath']=image_path
     #直接返回的就是json格式，省去了json转换的步骤
     return JsonResponse(res)

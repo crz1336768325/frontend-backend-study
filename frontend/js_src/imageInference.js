@@ -4,7 +4,7 @@ window.onload=function(){
     var vm = new Vue({
         el:"#upload",
         data:{
-
+            showUploadImg: '',
         },
         methods : {
             addimg:function () {
@@ -19,7 +19,12 @@ window.onload=function(){
                     console.log(response.data['status'])
                     if (response.data['status']==="success"){
                         console.log("成功上传图像")
-                        alert("成功上传图像")
+                        // alert("成功上传图像")
+                        console.log(response.data['imgpath'])
+                        vm.showUploadImg=response.data['imgpath']
+                        //为啥this 不能显示出图像
+                        // this.showUploadImg=response.data['imgpath']
+                        console.log("显示图像")
                     }else{
                         console.log("上传图像失败")
                         alert("上传图像失败")
