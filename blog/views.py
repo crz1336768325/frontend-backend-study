@@ -83,7 +83,7 @@ def register_check(request):
         username=json_name['name']
         password=json_name['password']
         print("---------",username)
-        exist=sqlOperation.insert([username,password])
+        exist=sqlOperation.insertUsername([username,password])
         if exist:
             data={
                 'status':'success'
@@ -118,5 +118,22 @@ def uploadImg(request):
         res['code']=200
         res['status']='success'
         res['imgpath']=image_path
+        print("上传图像成功")
     #直接返回的就是json格式，省去了json转换的步骤
+    return JsonResponse(res)
+@csrf_exempt
+# 用于用户登录确认
+def userManagement(request):
+    res={}
+
+    print("请求方法",request.method)
+
+    if request.method == "GET":
+        print("login_check detial ",request.body)
+        json_name=json.loads(request.body)
+
+        print("---------",username)
+        userData=sqlOperation.searchUser()
+        print(result)
+
     return JsonResponse(res)

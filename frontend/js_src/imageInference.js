@@ -31,6 +31,7 @@ window.onload=function(){
                         alert("上传图像失败")
                     }
                 }).catch(function (error) {
+                    console.log("occur error")
                     console.log(error);
                 });
             }

@@ -19,7 +19,7 @@ class backend_operation:
             return False
         else:
             return True
-    def insert(self,param):
+    def insertUsername(self,param):
         username=param[0]
         password=param[1]
         if self.checkexist(username,password):
@@ -32,21 +32,22 @@ class backend_operation:
             self.conn.commit()
             # self.exit()
             return True
-    def delete(self,username):
+    def deleteUser(self,username):
         sql='DELETE from user WHERE username=%s'%(username)+";"
         self.cursor.excute(sql)
         
 
-    def search(self,age,gender):
+    def searchUser(self,age,gender):
         print("search--------")
-        sql="SELECT * FROM user WHERE AGE_RANGE="+str(age)+" AND GENDER="+"'"+gender+"'"+";"
+        sql="SELECT * FROM user ;"
         print(sql)
         # sql = "SELECT * FROM USER WHERE AGE_RANGE=5 AND GENDER='M';"
         self.cursor.execute(sql)
         result=self.cursor.fetchall()
-        print(result)
-        for row in result:
-            print(row[0])
+
+        # for row in result:
+        #     print(row[0])
+        return result
 
     def exit(self):
         self.conn.commit()
