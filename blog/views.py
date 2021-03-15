@@ -130,10 +130,29 @@ def userManagement(request):
 
     if request.method == "GET":
         print("login_check detial ",request.body)
+        # json_name=json.loads(request.body)
+
+
+        userData=sqlOperation.searchUser()
+        print("waht",userData)
+        for i in userData:
+            res.update({i[1]:i[2]})
+        print("re",res)
+        return JsonResponse(res)
+@csrf_exempt
+# 用于用户登录确认
+def userDelete(request):
+    res={'status':'failed'}
+
+    print("请求方法",request.method)
+    print("login_check detial ",request.body)
+    if request.method == "POST":
+        
+
         json_name=json.loads(request.body)
 
-        print("---------",username)
-        userData=sqlOperation.searchUser()
-        print(result)
 
-    return JsonResponse(res)
+        deleteFlag=sqlOperation.deleteUser(json_name['username'])
+        print("waht",deleteFlag)
+        res['status']='success'
+        return JsonResponse(res)

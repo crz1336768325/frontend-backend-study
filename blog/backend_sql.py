@@ -10,7 +10,7 @@ class backend_operation:
         self.cursor.execute("use backendsql;")
     def checkexist(self,username,password):
         
-        sql="SELECT * FROM user WHERE username="+"'"+str(username)+"'"+ " and password="+"'"+str(password)+"'"+";"
+        sql="SELECT * FROM user WHERE username="+"'"+str(username)+"'"+ ";"
         
         self.cursor.execute(sql)
         result=self.cursor.fetchall()
@@ -33,11 +33,16 @@ class backend_operation:
             # self.exit()
             return True
     def deleteUser(self,username):
-        sql='DELETE from user WHERE username=%s'%(username)+";"
-        self.cursor.excute(sql)
+
+        sql="DELETE from user WHERE username='%s'"%(username)+";"
+        print("sq",sql)
+        self.cursor.execute(sql)
+        self.conn.commit()
+        return True
+
         
 
-    def searchUser(self,age,gender):
+    def searchUser(self):
         print("search--------")
         sql="SELECT * FROM user ;"
         print(sql)

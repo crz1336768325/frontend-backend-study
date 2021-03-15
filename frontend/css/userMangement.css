@@ -19,3 +19,8 @@ a{
   height: 30px;
 
 }
+.listdetail-li{
+  background-color: red;
+  text-align:center;
+  height: 30px;
+}
