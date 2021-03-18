@@ -16,11 +16,16 @@
         <div  id="userManagement">
             <!-- 使用普通javascript方式 -->
             <!-- <img src="./material/background.jpg"></img> -->
-            <button @click = "change"> 显示详情 </button>
-            <ul class="listdetail">
-                <!-- <text>sddsd<text> -->
-                    <li class="listdetail-li" v-for ="item in listitem">账户名称：          {{item}}   <button v-on:click="deleteUser"> 删除该用户</button></li>
-
+            <div>
+                <button @click = "change"> 显示详情 </button>
+            </div>
+            <div>
+                <ul class="listdetail">
+                    <!-- <text>sddsd<text> -->
+                        <li class="listdetail-li" v-for ="(item,index) in listitem">账户名称：          {{item}}   <button class='deleteUser' v-on:click="deleteUser(index)"> 删除该用户</button>
+                            <button class='modifyUser' v-on:click="modifyUser(index)"> 修改用户</button>
+                        </li>
+            </div>
             </ul>
         </div>
 

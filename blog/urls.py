@@ -9,6 +9,7 @@ urlpatterns = [
     path('uploadImg/', views.uploadImg, name='uploadImg'),
     path('userManagement/', views.userManagement, name='userManagement'),
      path('userDelete/', views.userDelete, name='userDelete'),
+     path('modifyUser/', views.modifyUser, name='modifyUser'),
     
     
 ]

@@ -1,7 +1,15 @@
 button {
     background-color: lightblue;
+
   }
-  
+.deleteUser{
+  background-color: pink;
+  float: right
+}
+.modifyUser{
+  background-color: pink;
+  float: right
+}
 #loginpage {
     background-color: yellow;
     text-align:center;

@@ -53,7 +53,17 @@ class backend_operation:
         # for row in result:
         #     print(row[0])
         return result
-
+    def modifyUserPassword(self,username,password):
+        print("modify--------")
+        sql="UPDATE user set password='%s' where username='%s';"%(password,username)
+        print(sql)
+        # sql = "SELECT * FROM USER WHERE AGE_RANGE=5 AND GENDER='M';"
+        self.cursor.execute(sql)
+        # result=self.cursor.fetchall()
+        self.conn.commit()
+        # for row in result:
+        #     print(row[0])
+        return True
     def exit(self):
         self.conn.commit()
         self.cursor.close()

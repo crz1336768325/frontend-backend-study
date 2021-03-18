@@ -5,6 +5,7 @@ window.onload=function(){
         el:"#userManagement",
         data:{
             listitem:[],
+            index:''
         },
         methods : {
             
@@ -27,15 +28,32 @@ window.onload=function(){
                 // alert("show something");
             },
 
-            deleteUser:function(){
+            deleteUser:function(index){
                 var self=this;
-
+                self.index=index
+                console.log("----",self.index)
                 console.log("显示当前所有用户信息")
                 var url="http://127.0.0.1:8000/blog/userDelete/"
                 // 进行post 请求            
                 //需解决动态获取button index
-                axios.post(url,{'username':'qxs7'}).then(function (response) {
-                    self.listitem.splice(self.listitem.indexOf('qxs7'),1);
+                axios.post(url,{'username':self.listitem[self.index]}).then(function (response) {
+                    self.listitem.splice(self.listitem.indexOf(self.listitem[self.index]),1);
+                    console.log(self.listitem)
+                }).catch(function (error) {
+                    console.log(error);
+                });
+                // alert("show something");
+            },
+            modifyUser:function(index){
+                var self=this;
+                self.index=index
+                console.log("----",self.index)
+                console.log("显示当前所有用户信息")
+                var url="http://127.0.0.1:8000/blog/modifyUser/"
+                // 进行post 请求            
+                //需解决动态获取button index
+                axios.post(url,{'username':self.listitem[self.index],'password':123456}).then(function (response) {
+                    
                     console.log(self.listitem)
                 }).catch(function (error) {
                     console.log(error);

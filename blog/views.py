@@ -156,3 +156,21 @@ def userDelete(request):
         print("waht",deleteFlag)
         res['status']='success'
         return JsonResponse(res)
+@csrf_exempt
+# 用于用户登录确认
+def modifyUser(request):
+    res={'status':'failed'}
+
+    print("请求方法",request.method)
+    print("login_check detial ",request.body)
+    if request.method == "POST":
+        
+
+        json_name=json.loads(request.body)
+
+
+        modifyflag=sqlOperation.modifyUserPassword(json_name['username'],json_name['password'])
+        print("waht",modifyflag)
+        res['status']='success'
+        return JsonResponse(res)
+        
