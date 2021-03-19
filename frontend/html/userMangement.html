@@ -5,32 +5,45 @@
         <title> 用户管理界面</title>
         <link rel="stylesheet" type="text/css" href="../css/userMangement.css">
         <!-- <script src="./js/node_modules/axios/lib/axios.js"></script> -->
-        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <!-- <script src="browser.js"> </script> -->
-        <!-- <script src="vue_use.js"> </script> -->
-        <script src="../js_src/userMangement.js"> </script>
+
     </head>
 
     <body background="../material/background.jpg">
         <div  id="userManagement">
             <!-- 使用普通javascript方式 -->
             <!-- <img src="./material/background.jpg"></img> -->
-            <div>
+            <!-- <div>
                 <button @click = "change"> 显示详情 </button>
-            </div>
+            </div> -->
+
             <div>
                 <ul class="listdetail">
                     <!-- <text>sddsd<text> -->
-                        <li class="listdetail-li" v-for ="(item,index) in listitem">账户名称：          {{item}}   <button class='deleteUser' v-on:click="deleteUser(index)"> 删除该用户</button>
-                            <button class='modifyUser' v-on:click="modifyUser(index)"> 修改用户</button>
+                        <li class="listdetail-li" v-for ="(item,index) in currentPageData">账户名称：          {{item}}   索引信息   {{index}} <button class="deleteUser" v-on:click="deleteUser(index)"> 删除该用户</button>
+                            <button class="modifyUser" v-on:click="modifyUser(index)"> 修改用户</button>
                         </li>
+
+
+
+
+                        <button @click="prevPage()">
+                            上一页
+                        </button>
+
+                        <span>第{{currentPage}}页/共{{totalPage}}页</span>
+                        <button @click="nextPage()">
+                            下一页
+                        </button>
             </div>
             </ul>
         </div>
 
-      
+        <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- <script src="browser.js"> </script> -->
+        <!-- <script src="vue_use.js"> </script> -->
+        <script src="../js_src/userMangement.js"> </script>
     </body>
 
 </html>
