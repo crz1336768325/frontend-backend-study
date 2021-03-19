@@ -73,7 +73,7 @@ def login_check(request):
         # return HttpResponse("服务器成功接收post请求."+content)
         return HttpResponse(json.dumps(data))
 @csrf_exempt
-# 用于用户登录确认
+# 用于注册用户并确认是否注册成功
 def register_check(request):
     print("请求方法",request.method)
     print(request.body)
@@ -98,7 +98,7 @@ def register_check(request):
 
 
 @csrf_exempt
-# 用于用户登录确认
+# 用于用户上传图像
 def uploadImg(request):
     res={}
 
@@ -122,7 +122,7 @@ def uploadImg(request):
     #直接返回的就是json格式，省去了json转换的步骤
     return JsonResponse(res)
 @csrf_exempt
-# 用于用户登录确认
+# 用于用户管理
 def userManagement(request):
     res={}
 
@@ -140,7 +140,7 @@ def userManagement(request):
         print("re",res)
         return JsonResponse(res)
 @csrf_exempt
-# 用于用户登录确认
+# 用于用户删除
 def userDelete(request):
     res={'status':'failed'}
 
@@ -157,7 +157,7 @@ def userDelete(request):
         res['status']='success'
         return JsonResponse(res)
 @csrf_exempt
-# 用于用户登录确认
+
 def modifyUser(request):
     res={'status':'failed'}
 

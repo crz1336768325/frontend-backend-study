@@ -10,8 +10,9 @@ class backend_operation:
         self.cursor.execute("use backendsql;")
     def checkexist(self,username,password):
         
+        # sql="SELECT * FROM user WHERE username="+"'"+str(str(username).encode('utf-8'))+"'"+ ";"
         sql="SELECT * FROM user WHERE username="+"'"+str(username)+"'"+ ";"
-        
+        print("--------",sql)
         self.cursor.execute(sql)
         result=self.cursor.fetchall()
         print("check result",result)
