@@ -2,13 +2,18 @@ button {
     background-color: lightblue;
 
   }
+li{
+    list-style:none;
+    
+  }
 .deleteUser{
   background-color: pink;
-  float: right
+  float: right;
+
 }
 .modifyUser{
   background-color: pink;
-  float: right
+  float: right;
 }
 #loginpage {
     background-color: yellow;
@@ -31,4 +36,10 @@ a{
   background-color: red;
   text-align:center;
   height: 30px;
+}
+.clickpage{
+  height: 160px;
+}
+.detail{
+  height: 160px;
 }
